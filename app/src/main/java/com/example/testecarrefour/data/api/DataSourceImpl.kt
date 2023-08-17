@@ -1,11 +1,12 @@
 package com.example.testecarrefour.data.api
 
-import com.example.testecarrefour.domain.models.UsersResponse
+import com.example.testecarrefour.domain.models.User
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 class DataSourceImpl @Inject constructor(private val githubApiService: GithubApiService) :
     DataSource {
-    override suspend fun getUsers(): List<UsersResponse> {
+    override fun getUsers(): Observable<List<User>> {
         return githubApiService.getUsers()
     }
 }
