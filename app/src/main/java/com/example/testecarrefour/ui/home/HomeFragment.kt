@@ -11,8 +11,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testecarrefour.databinding.FragmentHomeBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
+//TODO Adicionar busca pela barra de pesquisa pelo nome
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -58,13 +60,8 @@ class HomeFragment : Fragment() {
 
     private fun setupErrorOnRequest() {
         viewModel.requestThrowable.observe(viewLifecycleOwner) {
-            Log.e("users response exception", it.message!!)
+            Snackbar.make(requireView(), it.message!!, Snackbar.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.disposeSubscriptions()
     }
 
 //    private fun showProgressBar() {

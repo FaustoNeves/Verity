@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">TesteCarrefour</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="company_text">Companies: %1$s</string>
+    <string name="public_repos_text">Public repositories: %1$s</string>
+    <string name="followers_text">Followers: %1$s</string>
+    <string name="following_text">Following: %1$s</string>
+    <string name="visit_profile">Visit profile</string>
+    <string name="repositories">Repositories</string>
+    <string name="repo_name">Name: %1$s</string>
+    <string name="repo_description">Description: %1$s</string>
+    <string name="language">Language: %1$s</string>
 </resources>

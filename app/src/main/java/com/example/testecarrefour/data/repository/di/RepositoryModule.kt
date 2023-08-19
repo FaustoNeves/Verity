@@ -1,7 +1,7 @@
 package com.example.testecarrefour.data.repository.di
 
 import com.example.testecarrefour.data.api.DataSource
-import com.example.testecarrefour.data.repository.UsersRepository
+import com.example.testecarrefour.data.repository.GithubRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun providesUsersRepository(dataSource: DataSource): UsersRepository {
-        return UsersRepository(dataSource)
+    fun providesUsersRepository(dataSource: DataSource): GithubRepository {
+        return GithubRepository(dataSource)
     }
 }

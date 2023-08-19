@@ -12,13 +12,13 @@ class UsersAdapter(private val usersList: List<User>) :
     RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
     private var onClickListener: OnClickListener? = null
 
-    class ViewHolder(private var binding: ListItemUserBinding) :
+    class ViewHolder(private val binding: ListItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindView(currentUser: User) {
             Picasso.get().load(currentUser.userAvatar).resize(200, 200)
                 .error(R.drawable.baseline_error_outline_24).centerCrop()
                 .into(binding.userImage)
-            binding.userName.text = currentUser.userName
+            binding.userName.text = currentUser.userLogin
         }
     }
 
@@ -34,7 +34,7 @@ class UsersAdapter(private val usersList: List<User>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            onClickListener!!.onClick(usersList[position].userName)
+            onClickListener!!.onClick(usersList[position].userLogin)
         }
         holder.bindView(usersList[position])
     }
