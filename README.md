@@ -2,17 +2,17 @@
 
 Endpoints utilizados
 https://api.github.com
-![base_endpoint](https://github.com/FaustoNeves/Verity/assets/66192808/802cfb2c-b685-4d98-8602-a6e859014ce9)
+![base_endpoint](https://github.com/FaustoNeves/Verity/assets/66192808/995d123f-7f15-459b-85cd-120c538ecdbe)
 
 https://api.github.com/users
-![users](https://github.com/FaustoNeves/Verity/assets/66192808/5ba2514c-e66b-4eb8-bbdd-76793629b0b1)
+![users](https://github.com/FaustoNeves/Verity/assets/66192808/aac3f264-c92e-40ab-8987-4f4267aa2f17)
 
 https://api.github.com/users/{login}
-![mojombo](https://github.com/FaustoNeves/Verity/assets/66192808/eabc7d76-e203-4918-838e-6e1db99b6929)
+![mojombo](https://github.com/FaustoNeves/Verity/assets/66192808/87d14a93-1b4e-4375-a5a3-ae2f875e1263)
 
 https://api.github.com/users/{login}/repos
-![repos](https://github.com/FaustoNeves/Verity/assets/66192808/b77cc564-c91d-4001-9215-184348a1f0c5)
-![repos_2](https://github.com/FaustoNeves/Verity/assets/66192808/95ab9d3d-4c4e-4614-ac78-6ccb4fae7eee)
+![repos](https://github.com/FaustoNeves/Verity/assets/66192808/164b7a0e-4528-4b9a-8219-73f95ee50c46)
+![repos_2](https://github.com/FaustoNeves/Verity/assets/66192808/8c07d8eb-afcc-4fc8-b609-346424c2cad2)
 
 Versão utilizada do Android Studio: Android Studio Giraffe | 2022.3.1
 Android Gradle Plugin Version 8.1.0
@@ -25,7 +25,8 @@ Pixel 4 XL api lvl 30 (Android 11)
 
 Arquitetura do aplicativo
 
-![architecture_tree](https://github.com/FaustoNeves/Verity/assets/66192808/dac3627b-bfdc-4bc9-9282-a1a76ed03de6)
+![architecture_tree](https://github.com/FaustoNeves/Verity/assets/66192808/058393cb-50c3-4e1f-8f1c-620749370152)
+
 
 Desabilite os efeitos de animação para rodar os testes, rode no terminal do Android Studio:
 -
@@ -44,15 +45,19 @@ Para executar os testes, inicie o emulador e, em seguida, insira no terminal:
 
 Após a execução dos testes, procure no terminal pelo link do report:
 -
-![link report](https://github.com/FaustoNeves/Verity/assets/66192808/ae88c297-7945-4c0d-8db4-a75c854dac13)
+![link report](https://github.com/FaustoNeves/Verity/assets/66192808/f1220b14-05ab-40d4-a330-611df7027e80)
+
 
 Esse link abrirá para a página mostrando o relatório dos testes:
 -
-![teste1](https://github.com/FaustoNeves/Verity/assets/66192808/cc8e7fe9-4cfe-4f79-ace4-d88193234080)
+![teste1](https://github.com/FaustoNeves/Verity/assets/66192808/7c18e153-1fe1-418e-b4bf-584776168eb7)
+
 -
-![teste2](https://github.com/FaustoNeves/Verity/assets/66192808/b4508368-9903-478b-8446-f3ed496a405d)
+![teste2](https://github.com/FaustoNeves/Verity/assets/66192808/aed66b95-96b2-4c83-b859-746cc70f1b7f)
+
 -
-![testes3](https://github.com/FaustoNeves/Verity/assets/66192808/1fd2274d-5321-4f37-95bf-23589dcb5eda)
+![testes3](https://github.com/FaustoNeves/Verity/assets/66192808/0dcf3437-5919-49d2-8656-eb93a6a1e101)
+
 
 Obrigado, pessoal!
 
