@@ -21,6 +21,24 @@
         tools:layout="@layout/fragment_user_info" >
         <argument
             android:name="userName"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="userProfile"
+            app:argType="com.example.testecarrefour.domain.models.UserProfile"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_userInfoFragment_to_userInfoBottomSheetDialog"
+            app:destination="@id/userInfoBottomSheetDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/userInfoBottomSheetDialog"
+        android:name="com.example.testecarrefour.ui.reposinfo.RepositoriesBottomSheetDialog"
+        android:label="fragment_user_info_bottom_sheet_dialog"
+        tools:layout="@layout/fragment_user_info_bottom_sheet_dialog" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </dialog>
 </navigation>

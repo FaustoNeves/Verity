@@ -1,5 +1,6 @@
 package com.example.testecarrefour.data.api
 
+import android.util.Log
 import com.example.testecarrefour.domain.models.GitRepo
 import com.example.testecarrefour.domain.models.User
 import com.example.testecarrefour.domain.models.UserProfile
@@ -16,7 +17,7 @@ class DataSourceImpl @Inject constructor(private val githubApiService: GithubApi
     }
 
     override suspend fun getUserInfo(userName: String): UserProfile {
-        return githubApiService.getUserProfile(userName)
+            return githubApiService.getUserProfile(userName)
     }
 
     override suspend fun getUserRepos(userName: String): List<GitRepo> {

@@ -6,15 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testecarrefour.databinding.FragmentHomeBinding
+import com.example.testecarrefour.utils.EMPTY_INPUT_SEARCH_FIELD
+import com.example.testecarrefour.utils.IdleResource
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
-//TODO Adicionar busca pela barra de pesquisa pelo nome
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -32,20 +34,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupErrorOnRequest()
+        setupListenersForErrors()
         initializeUsersRecyclerView()
+        setupClickActionForSearch()
     }
 
     private fun initializeUsersRecyclerView() {
         usersRecyclerView = binding.usersRecyclerView
         usersRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        viewModel.user.observe(viewLifecycleOwner) {
+        viewModel.usersList.observe(viewLifecycleOwner) {
             usersAdapter = UsersAdapter(it)
             usersRecyclerView.adapter = usersAdapter
             setupClickActionForAdapter()
+            hideProgressBar()
         }
         viewModel.getUsers()
+        showProgressBar()
     }
 
     private fun setupClickActionForAdapter() {
@@ -58,26 +63,56 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun setupErrorOnRequest() {
-        viewModel.requestThrowable.observe(viewLifecycleOwner) {
-            Snackbar.make(requireView(), it.message!!, Snackbar.LENGTH_SHORT).show()
+    private fun setupClickActionForSearch() {
+        viewModel.initializeNavigation.observe(viewLifecycleOwner) {
+            if (it) {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToUserInfoFragment(
+                        null,
+                        viewModel.userProfile.value
+                    )
+                findNavController().navigate(action)
+            }
+        }
+
+        binding.searchButton.setOnClickListener {
+            viewModel.getUser(binding.searchFieldEditText.text.toString())
         }
     }
 
-//    private fun showProgressBar() {
-//        binding.dark_background_login.visibility = View.VISIBLE
-//        binding.login_button.setBackgroundColor(R.color.orange_2_dark)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-//            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-//        );
-//        binding.login_progress_bar.visibility = View.VISIBLE
-//    }
-//
-//    private fun hideProgressBar() {
-//        binding.login_button.setBackgroundResource(R.color.orange_2)
-//        binding.dark_background_login.visibility = View.GONE
-//        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//        binding.login_progress_bar.visibility = View.GONE
-//    }
+    private fun setupListenersForErrors() {
+        viewModel.requestThrowableOn.observe(viewLifecycleOwner) {
+            hideProgressBar()
+            Snackbar.make(requireView(), it.message!!, Snackbar.LENGTH_SHORT).show()
+        }
+
+        viewModel.throwableOnGetUser.observe(viewLifecycleOwner) {
+            IdleResource.decrement()
+            if (it) {
+                binding.searchFieldEditText.error = EMPTY_INPUT_SEARCH_FIELD
+                binding.searchFieldEditText.requestFocus()
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.initializeNavigation.value = false
+        viewModel.throwableOnGetUser.value = false
+    }
+
+    private fun showProgressBar() {
+        IdleResource.increment()
+        requireActivity().window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
+        binding.homePg.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        binding.homePg.visibility = View.GONE
+        IdleResource.decrement()
+    }
 }

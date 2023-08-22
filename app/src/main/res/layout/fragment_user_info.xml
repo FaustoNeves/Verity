@@ -11,6 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ProgressBar
+            android:id="@+id/user_info_pg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/user_image"
             android:layout_width="wrap_content"
@@ -83,7 +93,7 @@
             tools:text="Following: 11" />
 
         <Button
-            android:id="@+id/visit_profile"
+            android:id="@+id/checkout_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
@@ -94,27 +104,17 @@
             app:layout_constraintTop_toBottomOf="@id/following"
             tools:text="Visitar perfil" />
 
-        <TextView
-            android:id="@+id/repositories_list_title"
+        <Button
+            android:id="@+id/checkout_repos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
-            android:text="@string/repositories"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@id/visit_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/visit_profile"
-            tools:text="Lista de Repositórios" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/repos_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/repositories_list_title"
-            app:layout_constraintStart_toStartOf="@id/repositories_list_title"
-            app:layout_constraintTop_toBottomOf="@id/repositories_list_title" />
+            android:text="@string/visit_repos"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@id/checkout_profile"
+            app:layout_constraintStart_toStartOf="@id/checkout_profile"
+            app:layout_constraintTop_toBottomOf="@id/checkout_profile"
+            tools:text="Visitar repositorios" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

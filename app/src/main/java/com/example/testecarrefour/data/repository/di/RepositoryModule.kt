@@ -5,14 +5,14 @@ import com.example.testecarrefour.data.repository.GithubRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-    @Singleton
     @Provides
     fun providesUsersRepository(dataSource: DataSource): GithubRepository {
         return GithubRepository(dataSource)

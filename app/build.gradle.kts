@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -17,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.testecarrefour.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -27,8 +28,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -67,15 +67,34 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.5.5")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.test.espresso:espresso-contrib:3.5.1")
+    implementation("androidx.navigation:navigation-testing:2.7.0")
     testImplementation("junit:junit:4.13.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("androidx.test:core:1.6.0-alpha01")
+    testImplementation("org.mockito:mockito-core:2.28.2")
+    androidTestImplementation("org.mockito:mockito-android:2.28.2")
+    debugImplementation("androidx.test:core-ktx:1.6.0-alpha01")
+    androidTestImplementation("androidx.test:core-ktx:1.6.0-alpha01")
+    testImplementation("androidx.test:core-ktx:1.6.0-alpha01")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
     implementation("com.google.dagger:hilt-android:2.47")
+    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-
+    debugImplementation("androidx.fragment:fragment-testing:1.6.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.47")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.47")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.47")
+
+    //Truth
+    androidTestImplementation("com.google.truth:truth:1.1.2")
+    testImplementation("com.google.truth:truth:1.1.2")
 
     // Dagger Core
     implementation("com.google.dagger:dagger:2.47")

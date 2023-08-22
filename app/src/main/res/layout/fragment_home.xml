@@ -6,23 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <EditText
-        android:id="@+id/search_fild_edit_text"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/home_pg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Pesquisar nome"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/search_field_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/type_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@id/search_field_edit_text"
+        app:layout_constraintStart_toStartOf="@id/search_field_edit_text"
+        app:layout_constraintTop_toBottomOf="@id/search_field_edit_text" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/users_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="@id/search_fild_edit_text"
-        app:layout_constraintStart_toStartOf="@id/search_fild_edit_text"
-        app:layout_constraintTop_toBottomOf="@id/search_fild_edit_text" />
+        app:layout_constraintEnd_toEndOf="@id/search_button"
+        app:layout_constraintStart_toStartOf="@id/search_button"
+        app:layout_constraintTop_toBottomOf="@id/search_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

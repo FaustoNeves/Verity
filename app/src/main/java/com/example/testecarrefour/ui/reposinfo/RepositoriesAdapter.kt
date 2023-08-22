@@ -1,4 +1,4 @@
-package com.example.testecarrefour.ui.userinfo
+package com.example.testecarrefour.ui.reposinfo
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -17,7 +17,8 @@ class RepositoriesAdapter(private val gitReposList: List<GitRepo>, private val c
         RecyclerView.ViewHolder(binding.root) {
         fun bindView(currentRepo: GitRepo) {
             binding.repoName.text = context.getString(R.string.repo_name, currentRepo.name)
-            binding.repoDescription.text = context.getString(R.string.repo_description, currentRepo.description)
+            binding.repoDescription.text =
+                context.getString(R.string.repo_description, currentRepo.description)
             binding.repoLanguage.text = context.getString(R.string.language, currentRepo.language)
         }
     }

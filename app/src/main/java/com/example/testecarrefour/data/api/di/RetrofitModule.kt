@@ -5,21 +5,20 @@ import com.example.testecarrefour.utils.GITHUB_API_BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 object RetrofitModule {
 
     @Provides
     fun provideBaseUrl() = GITHUB_API_BASE_URL
 
-    @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient
@@ -27,7 +26,6 @@ object RetrofitModule {
             .build()
     }
 
-    @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
@@ -36,7 +34,6 @@ object RetrofitModule {
         .build()
 
     @Provides
-    @Singleton
     fun provideApiService(retrofit: Retrofit): GithubApiService =
         retrofit.create(GithubApiService::class.java)
 }
